@@ -1,28 +1,28 @@
-#Muestras dependientes
-#Mismos individuos metidos en dos tiempos diferentes 
-#(2012 vs 2013) producción de semillas 
+#Importar datos de Githut
 
-tiempo <- read.csv("C:/Repositorios/Met_Est_2024/Muestra_dependiente.csv", header = T)
+url <-"https://raw.githubusercontent.com/mgtagle/Met_Est_2024/main/Datos_Madera_MET.csv"
 
-boxplot(tiempo$Kgsem ~ tiempo$Tiempo, col = "lavender", xlab = "Año", ylab = "Semillas (Kg)")
-abline(h=10.1, col = "aliceblue", lwd = 3, lty = "dotdash")
-abline(h=10.9, col = "lightcyan", lwd = 3, lty = "dotdash")
+madera <- read.csv(url, header = T)
 
-#Determinar las medias de Kg en ambos años 
-tapply(tiempo$Kgsem, tiempo$Tiempo, mean)
+boxplot(madera$Peso_g ~ madera$Especie, col = "lightcyan")
 
-#Quiero saber si hay diferencias solamente
-t.test(tiempo$Kgsem~ tiempo$Tiempo, paired =T)
+shapiro.test(madera$Peso_g)
 
-#saber si 2013 es mayor que 2012
-t.test(tiempo$Kgsem~ tiempo$Tiempo, paired =T, alternative = "less")
+bartlett.test(madera$Peso_g ~ madera$Especie)
 
-#Colores
-"lemonchiffon"
-"lemonchiffon1"
-"lemonchiffon2"
-"lavender"
-"lightcyan"
-"aliceblue"
-"mistyrose"
-"paleturquoise"
+madera$peso_t<- log(madera$Peso_g+ 0.05)
+
+boxplot(madera$peso_t ~ madera$Especie, col = "lavender")
+
+t.test(madera$Peso_g ~ madera$Especie, var.equal = F)
+t.test(madera$Peso_g ~ madera$Especie, var.equal = F)
+
+boxplot(madera$Lado_C ~ madera$Especie, col = "#F0F8FF")
+
+shapiro.test(madera$Lado_C)
+
+bartlett.test(madera$Lado_C ~ madera$Especie)
+
+madera$Lado_C<- log(madera$Lado_C+ 0.05)
+
+t.test(madera$Lado_C ~ madera$Especie, var.equal = F)
