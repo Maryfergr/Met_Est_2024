@@ -33,3 +33,5 @@ Bienvenido a mi repositorio, soy nueva en esto, sigo aprendiendo. Repositorio de
 + Soy fan de Taylor Swift ✨
 + Me gusta trabajar en equipo 💼
 + Amo mi carrera 🏞️
+### Gráfica de contribuciones 📊
+![Captura](https://github.com/user-attachments/assets/ff02b288-5dfb-4a4b-b205-efec23f5614e)
